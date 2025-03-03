@@ -105,6 +105,11 @@ TREM.Report = {
 				const element = this._createReportItem(report);
 				const report_date = report.originTime?.split(" ")[0];
 
+				if (!report_date) {
+					log(report, 3, "loadReports", "Report");
+					continue;
+				}
+
 				if (report.mag) report.magnitudeValue = report.mag;
 
 				if (
