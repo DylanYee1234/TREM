@@ -4340,7 +4340,14 @@ function ReportList(earthquakeReportArr, palert) {
 }
 
 function addReport(report, prepend = false, index = 0, palert = false) {
-	const OriginTime = report.originTime ? new Date(report.originTime).getTime() : report.time;
+	let OriginTime = 0;
+
+	if (report) {
+		OriginTime = report.originTime ? new Date(report.originTime).getTime() : report.time;
+	} else {
+		log(`earthquake addReport >> ${report}`, 1, "addReport", "earthquake");
+		return;
+	}
 
 	if (replay != 0 && OriginTime > new Date(replay + (NOW().getTime() - replayT)).getTime()) return;
 
