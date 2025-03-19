@@ -956,7 +956,7 @@ TREM.Report = {
 								_report_data = storage.getItem("report_data");
 
 								for (let _i = 0; _i < _report_data.length; _i++)
-									if (_report_data[_i].id)
+									if (_report_data[_i]?.id)
 										if (_report_data[_i].id === report.id)
 											_report_data[_i] = report;
 
