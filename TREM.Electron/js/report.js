@@ -1398,15 +1398,11 @@ TREM.Report = {
 
 			for (let i = 0; i < res.length; i++) {
 				const eew = res[i].eq;
-
-				if (eew.lat == report.lat && eew.lon == report.lon)
-					eew.lat += 1;
-
 				const latlng = L.latLng(eew.lat, eew.lon);
 				const latlng1 = L.latLng(report.epicenterLat ?? report.lat, report.epicenterLon ?? report.lon);
 				const distance = latlng.distanceTo(latlng1);
 				const eew_epicenterIcon = L.marker(
-					[eew.lat, eew.lon],
+					[(eew.lat == report.lat && eew.lon == report.lon) ? eew.lat + 0.03 : eew.lat, eew.lon],
 					{
 						icon: L.divIcon({
 							html      : TREM.Resources.icon.oldcross,
